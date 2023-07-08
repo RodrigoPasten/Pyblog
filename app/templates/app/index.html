@@ -103,6 +103,8 @@
         <h1 class="sec-title">Nuevos blogs</h1>
         <div class="grid-3">
           {% for post in posts %}
+
+
           <!-- card -->
           <a href="{% url 'post_page'  post.slug %}">
             <div class="card">
@@ -122,6 +124,7 @@
                     <p>Author name</p>
                     <small>{{post.last_updated}}</small>
                   </div>
+
                 </div>
               </div>
             </div>
