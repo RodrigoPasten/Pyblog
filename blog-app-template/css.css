@@ -210,6 +210,13 @@ header .container {
   justify-content: center;
   margin-top: 3rem;
 }
+.subscribe-successful {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
 
 .newsletter input {
   border: 1px solid var(--black);
@@ -404,6 +411,7 @@ header .container {
 
 .news-signup .newsletter {
   margin-top: 1.5rem;
+  color: var(--blue);
 }
 
 footer {

@@ -37,11 +37,14 @@ img {
   max-width: 1220px;
   margin: auto;
   padding: 0 10px;
+
 }
 
 .container-fluid {
   max-width: 100%;
-  padding: 0 5rem;
+  padding: 0 7rem;
+  border-bottom: solid 1px var(--blue);
+
 }
 
 p,
@@ -70,6 +73,7 @@ header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 
 .logo {
@@ -650,6 +654,7 @@ footer .container {
   gap: 1rem;
   margin-left: auto;
   margin-top: 0.5rem;
+  cursor: pointer;
 }
 
 .reply i {
@@ -929,7 +934,7 @@ p a {
 }
 
 main {
-  padding-top: 10rem !important;
+  padding-top: 5rem !important;
 }
 
 /* responsive code */
@@ -1048,6 +1053,7 @@ main {
   .container-fluid {
     padding: 0 1rem;
     height: 100%;
+    border-bottom: solid, 1px, red
   }
 
   .menu {
@@ -1102,5 +1108,9 @@ main {
 }
 
 .reply button {
-  background: transparent;
+ background: var(--blue);
+ color: white;
+ cursor: pointer;
+ border-radius: 45%;
+ padding: 10%;
 }
