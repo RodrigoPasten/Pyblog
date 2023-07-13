@@ -9,9 +9,8 @@
             <div class="page-top">
               <div class="top flex">
                 <div class="page-name">
-                  <a href="#" class="learn">
-                    <span class="material-icons"> keyboard_return </span> Go
-                    back
+                  <a href="{% url 'index' %}" class="learn">
+                    <span class="material-icons"> keyboard_return </span> Volver
                   </a>
                   <h1>Blog</h1>
                 </div>
@@ -32,16 +31,7 @@
                     <i class="uil uil-users-alt"></i>
                     <p class="view-count">{{post.view_count}} vista{{post.view_count | pluralize}}</p>
                   </div>
-                  <div class="track">
-                    <form action="" method="POST">
-                      <button type="submit" class="btn btn-info">
-                        <i class="uil uil-bookmark-full"></i>
-                        <p class="bookmark">Bookmark</p>
-                        <!-- REMOVE BOOKMARK
-                          <i class="fa-solid fa-bookmark"></i> -->
-                      </button>
-                    </form>
-                  </div>
+
                 </div>
               </div>
             </center>
@@ -54,7 +44,7 @@
                   </div>
                   <div class="blog-post-content">
                     <p>
-                      {{post.content}}
+                      {{post.content | safe}}
                     </p>
 
                     <div class="blog-tags">
@@ -62,33 +52,7 @@
                       <a href="{% url 'tag_page' tag.slug %}" class="tag">{{tag.name}} </a>
                       {% endfor %}
                     </div>
-                    <div class="social-share">
-                      <div class="reactions">
-                        <div class="likes">
-                          <i class="uil uil-heart"></i> <span>200</span>
-                        </div>
-                        <div class="total-comments">
-                          <i class="uil uil-comment-alt"></i>
-                          <span>10</span>
-                        </div>
-                      </div>
-                      <div class="share">
-                        <div class="social">
-                          <a href="#">
-                            <i class="fa-brands fa-facebook-f"></i>
-                          </a>
-                          <a href="#">
-                            <i class="fa-brands fa-instagram"></i>
-                          </a>
-                          <a href="#">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                          </a>
-                          <a href="#">
-                            <i class="fa-brands fa-twitter"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+
                     {% for comment in comments %}
                     <!-- comments -->
                     <div class="user-comment">
@@ -118,23 +82,27 @@
                              ¡tranquilein! Que no te angustie, tu correo ni ca lo publico.
                               Pero oye, esos campos con <span>*</span> son más necesarios que el
                               pebre en una empanada, ¿cachai? Así que no te hagai
-                              el leso y complétalos, poh. ¡Nada es imposible, ni una w...!
+                              el leso y complétalos, poh. ¡Nada es imposible, ni una w...! (solo usuarios registrados)
                             </p>
-                            <form method="POST">
-                              {% csrf_token %}
-                              {{form.content}}
-                              <div class="grid-3">
-                                <input type="hidden" name="post_id" value="{{post.id}}">
-                                <input type="hidden" name="parent" value="{{comment.id}}">
-                                {{form.name}}
-                                {{form.email}}
-                                {{form.course}}
-                              </div>
-
-                              <button class="btn btn-primary rounded">
-                                Enviar respuesta
-                              </button>
-                            </form>
+                           {% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        {{form.content}}
+        <div class="grid-3">
+            <input type="hidden" name="post_id" value="{{post.id}}">
+            <input type="hidden" name="parent" value="{{comment.id}}">
+            {{form.name}}
+            {{form.email}}
+            {{form.course}}
+        </div>
+        <button class="btn btn-primary rounded">
+            Enviar respuesta
+        </button>
+    </form>
+{% else %}
+     <br>
+    <a href="{% url 'register' %}" >Regístrate </a>
+{% endif %}
                           </div>
 
                         </div>
@@ -167,201 +135,36 @@
                 <div class="comment-box">
                   <br>
                   <h3>¡Ponle color! Tírate un comentario fresquito para este post,
-                    dale, no seai fome...</h3><br>
+                    dale, no seai fome... (Solo usuario registrados pueden comentar)</h3><br>
                   <p>
                     ¡Wena! ¿andai con la pera?, tu correo ni lo
                     mostramos, queda entre tú y yo, ¿ya? Pero mira, esos espacios
                     con asteriscos <span>*</span> son como la coca pal vino, indispensables pa' funcionar.
                     No seai pillo y rellénalos. ¡no es na' complicado!
                   </p>
-                  <form method="POST">
-                    {% csrf_token %}
-                    {{form.content}}
-                    <div class="grid-3">
-                      <input type="hidden" name = "post_id" value = "{{post.id}}">
-                       {{form.name}}
-                       {{form.email}}
-                      {{form.course}}
-                    </div>
-                    <button class="btn btn-primary rounded">
-                      Comentar
-                    </button>
-                  </form>
+                  {% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        {{form.content}}
+        <div class="grid-3">
+            <input type="hidden" name="post_id" value="{{post.id}}">
+            <input type="hidden" name="parent" value="{{comment.id}}">
+            {{form.name}}
+            {{form.email}}
+            {{form.course}}
+        </div>
+        <button class="btn btn-primary rounded">
+            Enviar respuesta
+        </button>
+    </form>
+{% else %}
+                    <br>
+    <a href="{% url 'register' %}" >Regístrate </a>
+{% endif %}
                 </div>
               </div>
             </section>
           </div>
-          <!-- left layout end -->
 
-          <!-- right layout -->
-          <div class="right">
-            <div class="block">
-              <h2 class="title2">Most recent</h2>
-              <div class="recent-post">
-                <div class="rounded-img">
-                  <img src="../images/post.png" alt="" />
-                </div>
-                <div class="recent-content">
-                  <h3>
-                    A blog title and other stuffs will add here, also we can
-                    incluse.
-                  </h3>
-                  <a class="learn" href="#"
-                    >Learn more
-                    <span class="material-icons"> trending_flat </span></a
-                  >
-                </div>
-              </div>
-              <div class="recent-post">
-                <div class="rounded-img">
-                  <img src="../images/post.png" alt="" />
-                </div>
-                <div class="recent-content">
-                  <h3>
-                    A blog title and other stuffs will add here, also we can
-                    incluse.
-                  </h3>
-                  <a class="learn" href="#"
-                    >Learn more
-                    <span class="material-icons"> trending_flat </span></a
-                  >
-                </div>
-              </div>
-              <div class="recent-post">
-                <div class="rounded-img">
-                  <img src="../images/post.png" alt="" />
-                </div>
-                <div class="recent-content">
-                  <h3>
-                    A blog title and other stuffs will add here, also we can
-                    incluse.
-                  </h3>
-                  <a class="learn" href="#"
-                    >Learn more
-                    <span class="material-icons"> trending_flat </span></a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div class="block r-blog">
-              <h2 class="title2">Related Blogs</h2>
-              <!-- card -->
-              <a href="#">
-                <div class="card">
-                  <div class="post-img">
-                    <img src="../images/post.png" alt="" />
-                    <div class="tag">Tag name</div>
-                  </div>
-                  <div class="card-content">
-                    <h3>
-                      A blog title and other stuffs will add here, also we can
-                      include.
-                    </h3>
-                    <div class="author">
-                      <div class="profile-pic">
-                        <img src="../images/author.svg" alt="" />
-                      </div>
-                      <div class="details">
-                        <p>Author name</p>
-                        <small>June 20, 2022</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <!-- card end-->
-
-              <!-- card -->
-              <a href="#">
-                <div class="card">
-                  <div class="post-img">
-                    <img src="../images/post.png" alt="" />
-                    <div class="tag">Tag name</div>
-                  </div>
-                  <div class="card-content">
-                    <h3>
-                      A blog title and other stuffs will add here, also we can
-                      include.
-                    </h3>
-                    <div class="author">
-                      <div class="profile-pic">
-                        <img src="../images/author.svg" alt="" />
-                      </div>
-                      <div class="details">
-                        <p>Author name</p>
-                        <small>June 20, 2022</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <!-- card end-->
-            </div>
-            <div class="block">
-              <h2 class="title2">Top category</h2>
-              <div class="card">
-                <h3>
-                  A blog title and other stuffs will add here, lso we can
-                  incluse.
-                </h3>
-                <p>
-                  Lorem ipsum began as scrambled, nonsensical Latin derived from
-                  Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
-                </p>
-                <a class="learn" href="#"
-                  >Learn more
-                  <span class="material-icons"> trending_flat </span></a
-                >
-              </div>
-              <div class="card">
-                <h3>
-                  A blog title and other stuffs will add here, lso we can
-                  incluse.
-                </h3>
-                <p>
-                  Lorem ipsum began as scrambled, nonsensical Latin derived from
-                  Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
-                </p>
-                <a class="learn" href="#"
-                  >Learn more
-                  <span class="material-icons"> trending_flat </span></a
-                >
-              </div>
-              <div class="card">
-                <h3>
-                  A blog title and other stuffs will add here, lso we can
-                  incluse.
-                </h3>
-                <p>
-                  Lorem ipsum began as scrambled, nonsensical Latin derived from
-                  Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
-                </p>
-                <a class="learn" href="#"
-                  >Learn more
-                  <span class="material-icons"> trending_flat </span></a
-                >
-              </div>
-            </div>
-            <div class="block">
-              <h2 class="title2">Top Tags</h2>
-              <div class="blog-tags">
-                <div class="tag">Tag</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag</div>
-              </div>
-            </div>
-          </div>
-          <!-- right layout end -->
-        </div>
-      </div>
 
 {% endblock content %}

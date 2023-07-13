@@ -19,6 +19,7 @@
   --shadow: #ffffff1a 0px 1px 1px 0px inset, #32325d40 0px 50px 100px -20px,
     #0000004d 0px 30px 60px -30px;
   --shadow2: rgba(30, 22, 73, 0.261) 0px 48px 100px 0px;
+  --blue2:  #5b6fff;
 }
 
 html {
@@ -88,7 +89,7 @@ header .container {
 .btn {
   cursor: pointer;
   height: 5rem;
-  padding: 0 3rem;
+  padding: 0 4rem;
   font-size: 1.6rem;
   font-weight: 500;
   border: 1px solid var(--blue);
@@ -96,6 +97,13 @@ header .container {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  border-radius: 1.5rem;
+}
+
+.btn:hover{
+box-shadow: 0 15px 20px #00000023;
+border-radius: 5rem;
+transition: 0.7s;
 }
 
 .btn span {
@@ -105,8 +113,12 @@ header .container {
 .btn-primary {
   background: var(--blue);
   color: white;
+  margin-left:1rem;
 }
-
+.subs{
+    background: #ff754b;
+    border: none;
+}
 .btn-scoundary {
   background: transparent;
   color: var(--blue);
@@ -140,7 +152,7 @@ header .container {
 
 .search-bar,
 .animated-search {
-  width: 5rem;
+  width: 4rem;
   aspect-ratio: 1/1;
   border: 1px solid var(--des);
   border-radius: 50%;
@@ -148,9 +160,9 @@ header .container {
   align-items: center;
   justify-content: center;
   background: white;
-  box-shadow: 0 15px 20px #00000018;
+  box-shadow: 0 15px 20px #00000023;
   cursor: pointer;
-  margin-top: 10rem;
+  margin-top: 5rem;
   z-index: 2;
 }
 
@@ -865,11 +877,13 @@ p a {
 }
 
 .field-error {
-  background: rgb(229, 48, 32);
-
-  height: 100%;
+  background: #ff754b;
+  height: 7%;
+  justify-content: center;
   margin-top: 0.5rem;
   border-radius: 5rem;
+  align-content: center;
+  align-text: center;
 }
 
 .field-error p {
@@ -1114,3 +1128,4 @@ main {
  border-radius: 45%;
  padding: 10%;
 }
+
