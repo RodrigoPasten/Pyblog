@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Pyblog | Ingresa {% endblock title %}
+{% load static %}
+{% block content %}
+ <div class="container">
+        <div class="page-name">
+          <a href="{% url 'index' %}" class="learn">
+            <span class="material-icons"> keyboard_return </span> Volver
+
+          </a>
+          <h1>Ingresar</h1>
+        </div>
+<form action="{% url 'login'%}" method="post" class="form">
+  {% csrf_token %}
+      <center>
+        <div class="logo f-logo">
+          <a href="{% url 'index' %}" class="logo">
+          <i class="fa-brands fa-python">b</i>
+        </a>
+            <br>
+
+        </div>
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+          <br><br>
+               <div class="field-error">
+                    <p>{{error}}</p>
+               </div>
+          {% endfor %}
+        {% endif %}
+        <div class="inputs">
+          <div>
+          <div class="search-bar s-active input">
+           {{ form.username }}
+            <div class="animated-search">
+              <i class="uil uil-envelope-alt"></i>
+            </div>
+          </div>
+          <div class="search-bar s-active input">
+            {{ form.password}}
+            <div class="animated-search">
+              <i class="uil uil-key-skeleton"></i>
+            </div>
+          </div>
+
+          </div>
+
+          <button class="btn btn-primary rounded" type="submit">
+            Ingresa <span class="material-icons"> arrow_right_alt </span>
+          </button>
+          <p>No tení cuenta? <a href="{% url "register" %}">Regístrate</a></p>
+        </div>
+      </center>
+    </form>
+{% endblock content %}

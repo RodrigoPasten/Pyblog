@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Pyblog | {{tag.name}}{% endblock title%}
-{% block content%}
+{% block title %}Perfil | {{profile.user.first_name}}{% endblock title %}
+{% block content %}
+{% load static %}
+
       <div class="container">
         <div class="layout">
           <!-- left layout -->
@@ -8,28 +10,29 @@
             <div class="page-top">
               <div class="top flex">
                 <div class="page-name">
-                    <a href="{% url 'index' %}" class="learn">
-                <span class="material-icons"> keyboard_return </span> Volver
-              </a>
-                  <h1>Tag</h1>
+                  <a href="#" class="learn">
+                    <span class="material-icons"> keyboard_return </span> Go
+                    back
+                  </a>
+                  <h1>Autor</h1>
                 </div>
               </div>
             </div>
 
             <center>
               <div class="typo">
-                <h1 class="title">{{tag.name}}</h1>
+                <h1 class="title">{{profile.user.first_name}} {{profile.user.last_name}}</h1>
                 <p>
-                 {{tag.description}}
+                  {{profile.bio}}
                 </p>
               </div>
             </center>
             <section class="sp">
               <div class="container">
-                 <h1 class="sec-title">Top blogs</h1>
-        <div class="grid-3">
-          {% for post in top_posts %}
-          <!-- card -->
+                <h1 class="sec-title">Lo más visto de {{profile.user.first_name}}</h1>
+                <div class="grid-2 blog">
+                  {% for post in top_posts %}
+                  <!-- card -->
           <a href="{% url 'post_page'  post.slug %}">
             <div class="card">
               <div class="post-img">
@@ -53,17 +56,20 @@
             </div>
           </a>
           <!-- card end-->
-           {% empty %}
+                  {% empty %}
                   <p>No tiene publicaciones por el momento</p>
-          {% endfor %}
+                 {% endfor %}
+                  </a>
+                  <!-- card end-->
                 </div>
               </div>
             </section>
             <section class="sp">
               <div class="container">
-                <h1 class="sec-title">Publicaciones fresquitas</h1>
+                <h1 class="sec-title">Lo más reciente de {{profile.user.first_name}}</h1>
                 <div class="grid-3 blog-grid">
-                  {% for post in recent_posts %}
+
+                    {% for post in recent_posts %}
                   <!-- card -->
                   <a href="{% url 'post_page' post.slug}">
                     <div class="card">
@@ -91,28 +97,51 @@
                    {% empty %}
                   <p>No tiene publicaciones por el momento</p>
                   {% endfor %}
+
+
                 </div>
                 <center>
-
+                  <button class="btn btn-primary rounded view">
+                    View more
+                    <span class="material-icons"> trending_flat </span>
+                  </button>
                 </center>
               </div>
             </section>
 
+
+                <center>
+
+
+            </section>
           </div>
           <!-- left layout end -->
+
           <!-- right layout -->
           <div class="right">
             <div class="block">
-              <h2 class="title2">Mas etiquetas</h2>
-              <div class="blog-tags">
-                {% for tag in tags %}
-                <a href="{% url 'tag_page' tag.slug %} " class="tag">{{tag}}</a>
-{% endfor %}
+              <h2 class="title2">Los más activos</h2>
+              {% for  author in top_authors %}
+              <div class="recent-post other-author">
+                <div class="rounded-img">
+                  <img src="{{author.profile.profile_image.url}}" alt="" />
+                </div>
+                <div class="recent-content">
+                  <h3>
+                    {{author.first_name}}
+                  </h3>
+                  <a class="learn" href="{% url 'author_page' author.profile.slug %}"
+                    >Mira sus publicaciones
+                    <span class="material-icons"> trending_flat </span></a
+                  >
+                </div>
               </div>
+              {% endfor %}
+
+
             </div>
 
           <!-- right layout end -->
         </div>
       </div>
-    </main>
-{% endblock content%}
+   {% endblock content %}

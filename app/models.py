@@ -1,11 +1,31 @@
+from datetime import datetime
+
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+import locale
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_image = models.ImageField(null=True, blank=True, upload_to="images/")
+    slug = models.SlugField(max_length=100, unique=True)
+    bio = models.CharField(max_length=200)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.user.username)
+        return super(Profile, self).save(*args, **kwargs)  # modifica el metodo save() y agrega funcionalidad
+
+    def __str__(self):
+        return self.user.first_name + " " + self.user.last_name
 
 
 class Subscribe(models.Model):
-    email = models.EmailField(max_length=60)
-    date = models.DateTimeField(auto_now=True)
+    email = models.EmailField(max_length=60, default=" ")
+
+    def __str__(self):
+        return self.email
 
 
 class Tag(models.Model):
@@ -33,10 +53,13 @@ class Post(models.Model):
     is_featured = models.BooleanField(default=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Comments(models.Model):
     content = models.TextField(max_length=1000)
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(default=datetime.now)
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=200)
     course = models.CharField(max_length=50)
@@ -48,3 +71,6 @@ class Comments(models.Model):
     Este campo puede ser nulo en la base de datos y en formularios, lo que significa
     que un comentario puede ser creado sin necesariamente ser una respuesta a otro."""
     parent = models.ForeignKey('self', on_delete=models.DO_NOTHING, null=True, blank=True, related_name='replies')
+
+    def __str__(self):
+        return self.course

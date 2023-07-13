@@ -1,8 +1,11 @@
-from django.shortcuts import render
-from app.forms import CommentForm, SubscribeForm
-from app.models import Post, Comments, Tag
+from django.shortcuts import render, redirect
+from app.forms import CommentForm, SubscribeForm, NewUserForm
+from app.models import Post, Comments, Tag, Profile
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.models import User
+from django.db.models import Count
+from django.contrib.auth import login
 
 
 def index(request):
@@ -20,7 +23,8 @@ def index(request):
         subscribe_form = SubscribeForm(request.POST)
         if subscribe_form.is_valid():
             subscribe_form.save()
-            subscribe_successful = '¡Bien ahi! Ahora estás suscrito'
+            request.session['subscribed'] = True
+            subscribe_successful = '¡Bien ahi! Ya estás suscrito'
             subscribe_form = SubscribeForm()
 
     context = {
@@ -73,7 +77,7 @@ def post_page(request, slug):
 
 def tag_page(request, slug):
     tag = Tag.objects.get(slug=slug)
-    top_posts = Post.objects.filter(tags__in=[tag.id]).order_by('-view_count')[0:3]
+    top_posts = Post.objects.filter(tags__in=[tag.id]).order_by('-view_count')[0:2]
     recent_posts = Post.objects.filter(tags__in=[tag.id]).order_by('-last_updated')[0:3]
     tags = Tag.objects.all()
     context = {
@@ -83,3 +87,46 @@ def tag_page(request, slug):
         "tags": tags
     }
     return render(request, 'app/tag.html', context)
+
+
+def author_page(request, slug):
+    profile = Profile.objects.get(slug=slug)
+    top_posts = Post.objects.filter(author=profile.user).order_by('-view_count')[0:2]
+    recent_posts = Post.objects.filter(author=profile.user).order_by('-last_updated')[0:3]
+    top_authors = User.objects.annotate(number=Count('post')).order_by("number")
+
+    context = {
+        'profile': profile,
+        'top_posts': top_posts,
+        'recent_posts': recent_posts,
+        'top_authors': top_authors
+
+    }
+    return render(request, 'app/author.html', context)
+
+
+def search_post(request):
+    search_query = ''
+    if request.GET.get('q'):
+        search_query = request.GET.get('q')
+    posts = Post.objects.filter(title__icontains=search_query)
+    context = {'posts': posts, "search_query": search_query}
+    return render(request, 'app/search.html', context)
+
+
+def register_user(request):
+    form = NewUserForm()
+    if request.POST:
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("/")
+    context = {"form": form}
+    return render(request, 'registration/registration.html', context)
+
+
+def all_post(request):
+    posts = Post.objects.all()
+    context = {'posts': posts, }
+    return render(request, 'app/all_post.html', context)
