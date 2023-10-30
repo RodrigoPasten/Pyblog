@@ -3,5 +3,4 @@ Django
 Pillow
 sqlparse
 tzdata
-django-jazzmin
 django-ckeditor
