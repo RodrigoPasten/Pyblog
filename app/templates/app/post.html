@@ -134,14 +134,13 @@
                 </div>
                 <div class="comment-box">
                   <br>
-                  <h3>¡Ponle color! Tírate un comentario fresquito para este post,
-                    dale, no seai fome... (Solo usuario registrados pueden comentar)</h3><br>
+                  <h3>¿Encontraste algún error, algo que no te gustó o que te
+                      encantó en el artículo? ¡Me encantaría recibir tus comentarios!
+                      Por favor, comparte tu opinión y contribuye a mejorar nuestro contenido.</h3><br>
                   <p>
-                    ¡Wena! ¿andai con la pera?, tu correo ni lo
-                    mostramos, queda entre tú y yo, ¿ya? Pero mira, esos espacios
-                    con asteriscos <span>*</span> son como la coca pal vino, indispensables pa' funcionar.
-                    No seai pillo y rellénalos. ¡no es na' complicado!
-                  </p>
+                   Tu correo es privado, no te preocupes, lo mantenemos seguro.
+                      Los campos con asteriscos (<span>*</span>) son obligatorios, así que por favor,
+                      asegúrate de completarlos.            </p>
                   {% if user.is_authenticated %}
     <form method="POST">
         {% csrf_token %}
@@ -151,7 +150,7 @@
             <input type="hidden" name="parent" value="{{comment.id}}">
             {{form.name}}
             {{form.email}}
-            {{form.course}}
+
         </div>
         <button class="btn btn-primary rounded">
             Enviar respuesta

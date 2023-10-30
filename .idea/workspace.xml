@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b5c4f96e-01e3-4a67-b0a6-d232e115e6b1" name="Changes" comment="add tag page(se agrega página de etiquetas)">
+      <change beforePath="$PROJECT_DIR$/app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/app/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/app/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/app/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-app-template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog-app-template/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/post.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/post.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2SG31l7PNaYAj1qbikIX04kXHzX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CursosUdemy/Pyblog&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.rainbow.brackets&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CursosUdemy\Pyblog" />
+      <recent name="D:\CursosUdemy\Pyblog\app\templates" />
+      <recent name="D:\CursosUdemy\Pyblog\app\templates\app" />
+      <recent name="D:\CursosUdemy\Pyblog\app\static\images" />
+      <recent name="D:\CursosUdemy\Pyblog\app\static\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CursosUdemy\Pyblog\app\templates\registration" />
+      <recent name="D:\CursosUdemy\Pyblog\app\templates\app" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b5c4f96e-01e3-4a67-b0a6-d232e115e6b1" name="Changes" comment="" />
+      <created>1688758879275</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1688758879275</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1688784008130</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1688784008130</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add forms (se agrega formulario)">
+      <created>1688837457880</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1688837457880</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add comment system (se agregan comentarios)">
+      <created>1688840778246</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688840778246</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add tag page(se agrega página de etiquetas)">
+      <created>1689019750380</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689019750380</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add tag page(se agrega página de etiquetas)">
+      <created>1689267104413</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689267104413</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add tag page(se agrega página de etiquetas)">
+      <created>1689272975293</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689272975293</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="add forms (se agrega formulario)" />
+    <MESSAGE value="add comment system (se agregan comentarios)" />
+    <MESSAGE value="add tag page(se agrega página de etiquetas)" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tag page(se agrega página de etiquetas)" />
+  </component>
+</project>

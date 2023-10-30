@@ -5,7 +5,6 @@ from app.models import Comments, Subscribe
 from django.utils.translation import gettext_lazy as _
 
 
-
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comments
@@ -13,10 +12,13 @@ class CommentForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['content'].widget.attrs['placeholder'] = 'Cuenta que onda, que opinas de este post *'
-        self.fields['name'].widget.attrs['placeholder'] = "Tu nombre, amigo(a) *"
-        self.fields['email'].widget.attrs['placeholder'] = "Tu correo: *"
-        self.fields['course'].widget.attrs['placeholder'] = "Curso:  "
+        self.fields['content'].widget.attrs['placeholder'] = 'Deja tus comentarios, ' \
+                                                             'sugerencias o preguntas a continuación. ' \
+                                                             'Tu opinión es importante ' \
+                                                             'y me ayuda a mejorar  *'
+        self.fields['name'].widget.attrs['placeholder'] = "Tu nombre, amigo(a):  *"
+        self.fields['email'].widget.attrs['placeholder'] = "Tu correo:  *"
+
 
 
 class SubscribeForm(forms.ModelForm):

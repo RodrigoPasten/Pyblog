@@ -1,5 +1,5 @@
-from datetime import datetime
 
+from ckeditor.fields import  RichTextField
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
@@ -22,7 +22,8 @@ class Profile(models.Model):
 
 
 class Subscribe(models.Model):
-    email = models.EmailField(max_length=60, default=" ")
+    email = models.EmailField(max_length=60)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.email
@@ -44,7 +45,7 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    content = models.TextField()
+    content = RichTextField()
     last_updated = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=200, unique=True)
     image = models.ImageField(null=True, blank=True, upload_to='images/')
@@ -58,8 +59,8 @@ class Post(models.Model):
 
 
 class Comments(models.Model):
-    content = models.TextField(max_length=1000)
-    date = models.DateTimeField(default=datetime.now)
+    content = RichTextField(max_length=500)
+    date = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=200)
     course = models.CharField(max_length=50)

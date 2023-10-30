@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     # Instalación de apps
     'app',
     'django.contrib.admin',
+    'ckeditor'
 ]
 
 
@@ -129,3 +131,10 @@ LOGIN_REDIRECT_URL = '/'  # redirige al home
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Panel de Administración",
+    "site_header": "HR Tech Chile",
+    "welcome_sign": "¡Bienvenido al panel de administración de HR Tech Chile!",
+    "search_model": "auth.User",
+}
