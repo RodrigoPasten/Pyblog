@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -132,9 +132,3 @@ LOGIN_REDIRECT_URL = '/'  # redirige al home
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-JAZZMIN_SETTINGS = {
-    "site_title": "Panel de Administración",
-    "site_header": "HR Tech Chile",
-    "welcome_sign": "¡Bienvenido al panel de administración de HR Tech Chile!",
-    "search_model": "auth.User",
-}
